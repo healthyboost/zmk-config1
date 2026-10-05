@@ -1,0 +1,16 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: yangxing
+      url-base: https://github.com/yangxing844
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: 5b51501fead672c41b5cfb396f3dafe0894bf4e9
+      import: app/west.yml
+    - name: zmk-lpm009m360a-driver
+      remote: yangxing
+      revision: 06cbdb6e8ef691d6de9045645b6182d906f44b06
+  self:
+    path: config

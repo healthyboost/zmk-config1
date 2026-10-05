@@ -1,0 +1,6 @@
+file_format: "1"
+id: lpm_view_adapter
+name: LPM View adapter
+type: shield
+requires: [i2c_oled]
+exposes: [nice_view_header]
