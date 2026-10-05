@@ -87,15 +87,20 @@ static void draw_status(lv_obj_t *widget, const struct status_state *state) {
     }
 
     /* Two nodes for the two halves, echoing the left screen's profile circles. */
-    canvas_draw_arc(canvas, 36, 59, 11, 0, 360, state->connected ? &arc_filled : &arc);
-    canvas_draw_arc(canvas, 108, 59, 11, 0, 360, state->connected ? &arc_filled : &arc);
-    canvas_draw_text(canvas, 26, 51, 20, state->connected ? &label_center_inv : &label_center, "L");
-    canvas_draw_text(canvas, 98, 51, 20, state->connected ? &label_center_inv : &label_center, "R");
-
     if (state->connected) {
+        canvas_draw_arc(canvas, 36, 59, 5, 0, 360, &arc_solid);
+        canvas_draw_arc(canvas, 108, 59, 5, 0, 360, &arc_solid);
+        canvas_draw_text(canvas, 26, 52, 20, &label_center_inv, "L");
+        canvas_draw_text(canvas, 98, 52, 20, &label_center_inv, "R");
+
         lv_point_t link[2] = {{47, 59}, {97, 59}};
         canvas_draw_line(canvas, link, 2, &line);
     } else {
+        canvas_draw_arc(canvas, 36, 59, 9, 0, 360, &arc);
+        canvas_draw_arc(canvas, 108, 59, 9, 0, 360, &arc);
+        canvas_draw_text(canvas, 26, 52, 20, &label_center, "L");
+        canvas_draw_text(canvas, 98, 52, 20, &label_center, "R");
+
         lv_point_t left_link[2] = {{47, 59}, {64, 59}};
         lv_point_t right_link[2] = {{80, 59}, {97, 59}};
         lv_point_t break_a[2] = {{68, 54}, {76, 64}};
