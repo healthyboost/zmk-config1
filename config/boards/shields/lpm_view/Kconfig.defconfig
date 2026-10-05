@@ -38,6 +38,12 @@ config NICE_VIEW_WIDGET_STATUS
 config NICE_VIEW_WIDGET_INVERTED
     bool "Invert custom status widget colors"
 
+config LPM_VIEW_PERIPHERAL_UI_FONTS
+    bool
+    default y if ZMK_SPLIT && !ZMK_SPLIT_ROLE_CENTRAL
+    select LV_FONT_MONTSERRAT_26
+    select LV_FONT_MONTSERRAT_12
+
 if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
 
 config NICE_VIEW_WIDGET_STATUS
