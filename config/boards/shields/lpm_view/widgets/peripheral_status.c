@@ -49,8 +49,8 @@ static void draw_status(lv_obj_t *widget, const struct status_state *state) {
     init_line_dsc(&line, LVGL_FOREGROUND, 2);
     lv_draw_arc_dsc_t arc;
     init_arc_dsc(&arc, LVGL_FOREGROUND, 2);
-    lv_draw_arc_dsc_t arc_filled;
-    init_arc_dsc(&arc_filled, LVGL_FOREGROUND, 9);
+    lv_draw_arc_dsc_t arc_solid;
+    init_arc_dsc(&arc_solid, LVGL_FOREGROUND, 10);
 
     /* Fill background */
     canvas_draw_rect(canvas, 0, 0, PERIPHERAL_CANVAS_WIDTH, PERIPHERAL_CANVAS_HEIGHT, &background);
