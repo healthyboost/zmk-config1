@@ -1,1 +1,28 @@
-LyoKICoKICogQ29weXJpZ2h0IChjKSAyMDIzIFRoZSBaTUsgQ29udHJpYnV0b3JzCiAqIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBNSVQKICoKICovCgojcHJhZ21hIG9uY2UKCiNpbmNsdWRlIDxsdmdsLmg+CiNpbmNsdWRlIDx6ZXBoeXIva2VybmVsLmg+CiNpbmNsdWRlICJ1dGlsLmgiCgojZGVmaW5lIFBFUklQSEVSQUxfQ0FOVkFTX1dJRFRIIDE0NAojZGVmaW5lIFBFUklQSEVSQUxfQ0FOVkFTX0hFSUdIVCA3MgojZGVmaW5lIFBFUklQSEVSQUxfQ0FOVkFTX0JVRl9TSVpFICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcCiAgICBMVl9DQU5WQVNfQlVGX1NJWkUoUEVSSVBIRVJBTF9DQU5WQVNfV0lEVEgsIFBFUklQSEVSQUxfQ0FOVkFTX0hFSUdIVCwgICAgICAgICAgICAgICAgICAgICAgICAgICBcCiAgICAgICAgICAgICAgICAgICAgICAgTFZfQ09MT1JfRk9STUFUX0dFVF9CUFAoQ0FOVkFTX0NPTE9SX0ZPUk1BVCksIExWX0RSQVdfQlVGX1NUUklERV9BTElHTikKCnN0cnVjdCB6bWtfd2lkZ2V0X3N0YXR1cyB7CiAgICBzeXNfc25vZGVfdCBub2RlOwogICAgbHZfb2JqX3QgKm9iajsKICAgIHVpbnQ4X3QgY2J1ZltQRVJJUEhFUkFMX0NBTlZBU19CVUZfU0laRV07CiAgICBzdHJ1Y3Qgc3RhdHVzX3N0YXRlIHN0YXRlOwp9OwoKaW50IHpta193aWRnZXRfc3RhdHVzX2luaXQoc3RydWN0IHpta193aWRnZXRfc3RhdHVzICp3aWRnZXQsIGx2X29ial90ICpwYXJlbnQpOwpsdl9vYmpfdCAqem1rX3dpZGdldF9zdGF0dXNfb2JqKHN0cnVjdCB6bWtfd2lkZ2V0X3N0YXR1cyAqd2lkZ2V0KTs=
+/*
+ *
+ * Copyright (c) 2023 The ZMK Contributors
+ * SPDX-License-Identifier: MIT
+ *
+ */
+
+#pragma once
+
+#include <lvgl.h>
+#include <zephyr/kernel.h>
+#include "util.h"
+
+#define PERIPHERAL_CANVAS_WIDTH 144
+#define PERIPHERAL_CANVAS_HEIGHT 72
+#define PERIPHERAL_CANVAS_BUF_SIZE                                                                 \
+    LV_CANVAS_BUF_SIZE(PERIPHERAL_CANVAS_WIDTH, PERIPHERAL_CANVAS_HEIGHT,                           \
+                       LV_COLOR_FORMAT_GET_BPP(CANVAS_COLOR_FORMAT), LV_DRAW_BUF_STRIDE_ALIGN)
+
+struct zmk_widget_status {
+    sys_snode_t node;
+    lv_obj_t *obj;
+    uint8_t cbuf[PERIPHERAL_CANVAS_BUF_SIZE];
+    struct status_state state;
+};
+
+int zmk_widget_status_init(struct zmk_widget_status *widget, lv_obj_t *parent);
+lv_obj_t *zmk_widget_status_obj(struct zmk_widget_status *widget);
