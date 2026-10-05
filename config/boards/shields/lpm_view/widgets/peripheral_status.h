@@ -13,14 +13,12 @@
 
 #define PERIPHERAL_CANVAS_WIDTH 144
 #define PERIPHERAL_CANVAS_HEIGHT 72
-#define PERIPHERAL_CANVAS_BUF_SIZE                                                                 \
-    LV_CANVAS_BUF_SIZE(PERIPHERAL_CANVAS_WIDTH, PERIPHERAL_CANVAS_HEIGHT,                           \
-                       LV_COLOR_FORMAT_GET_BPP(CANVAS_COLOR_FORMAT), LV_DRAW_BUF_STRIDE_ALIGN)
 
 struct zmk_widget_status {
     sys_snode_t node;
     lv_obj_t *obj;
-    uint8_t cbuf[PERIPHERAL_CANVAS_BUF_SIZE];
+    uint8_t cbuf[CANVAS_BUF_SIZE];
+    uint8_t cbuf2[CANVAS_BUF_SIZE];
     struct status_state state;
 };
 
